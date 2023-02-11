@@ -1,9 +1,9 @@
-const pokeNome = document.getElementById(".poke_nome");
-const pokeNumero = document.getElementById(".poke_numero");
-const pokeImagem = document.getElementById(".poke_imagem");
-const form = document.getElementById(".input_pesquisa");
-const btnA = document.getElementById(".button btn-ante");
-const btnP = document.getElementById(".button btn-prox")
+const pokeNome = document.querySelector(".poke_nome");
+const pokeNumero = document.querySelector(".poke_numero");
+const pokeImagem = document.querySelector(".poke_imagem");
+const form = document.getElementById(".input__pesquisa");
+const btnA = document.querySelector(".button btn-ante");
+const btnP = document.querySelector(".button btn-prox")
 
 
 let pesquisaPoke = 1;
@@ -39,4 +39,19 @@ form.addEventListener('submit', (evento) => {
     visualizaPoke(input.value.toLowerCase())
 });
 
+btnA.addEventListener('click', () => {
+    if (pesquisaPoke > 1) {
+        pesquisaPoke -= 1;
+        visualizaPoke(pesquisaPoke)
+    }
+});
+
+btnP.addEventListener('click', () => {
+        pesquisaPoke += 1;
+        visualizaPoke(pesquisaPoke)
+    
+});
+
+
+visualizaPoke(pesquisaPoke);
 
