@@ -1,8 +1,10 @@
-const pokeNome = document.getElementById("poke_nome");
-const pokeNumero = document.getElementById("poke_numero");
-const pokeImagem = document.getElementById("poke_imagem");
-const form = document.getElementById("input_pesquisa");
-const btns = document.getElementById("buttons");
+const pokeNome = document.getElementById(".poke_nome");
+const pokeNumero = document.getElementById(".poke_numero");
+const pokeImagem = document.getElementById(".poke_imagem");
+const form = document.getElementById(".input_pesquisa");
+const btnA = document.getElementById(".button btn-ante");
+const btnP = document.getElementById(".button btn-prox")
+
 
 let pesquisaPoke = 1;
 
@@ -14,9 +16,9 @@ const fetchPoke = async (pokemon) => {
         return data
     }
 }
+const visualizaPoke = async (pokemon) => {
 
-
-const data = fetchPoke(pokemon);
+const data = await fetchPoke(pokemon);
 
 if (data) {
     pokeImagem.style.display = 'block'
@@ -30,3 +32,11 @@ if (data) {
     pokeNome.innerHTML = 'Não encontrado!';
     pokeNumero.innerHTML = '';
 }
+}
+
+form.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+    visualizaPoke(input.value.toLowerCase())
+});
+
+
